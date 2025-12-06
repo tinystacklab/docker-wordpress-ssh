@@ -12,7 +12,7 @@ services:
     volumes:
       - ./db_data:/var/lib/mysql            # 持久化 MySQL 数据
     ports:
-      - "3306:3306"                       # 暴露 MySQL 端口（宿主机:容器）
+      - "43306:3306"                       # 暴露 MySQL 端口（宿主机:容器）
 
   wordpress:
     depends_on:
@@ -20,8 +20,8 @@ services:
     image: wordpress:latest
     restart: always
     ports:
-      - "8000:80"   # HTTP 端口映射（宿主机访问 WordPress：http://localhost:8000）
-      - "2222:22"   # SSH 端口映射（SSH 连接容器：ssh root@localhost -p 2222）
+      - "40080:80"   # HTTP 端口映射（宿主机访问 WordPress：http://localhost:8000）
+      - "40022:22"   # SSH 端口映射（SSH 连接容器：ssh root@localhost -p 2222）
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
